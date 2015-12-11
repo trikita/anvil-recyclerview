@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.2'
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 'android-23'
+    buildToolsVersion '23.0.2'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 23
+    }
+}
+
+repositories {
+	mavenLocal()
+	jcenter()
+}
+
+dependencies {
+	compile 'co.trikita:anvil-sdk19:+'
+    compile 'com.android.support:recyclerview-v7:+'
+
+	compile(project(':library')) {
+        exclude module: 'anvil-sdk15'
+    }
+}
