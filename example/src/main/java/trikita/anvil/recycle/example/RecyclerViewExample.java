@@ -29,7 +29,7 @@ public class RecyclerViewExample extends Activity {
 	}
 
 	public static class SimpleList extends RenderableView {
-		private List<String> mItems = items();
+		private final List<String> mItems = items();
 
 		public SimpleList(Context c) {
 			super(c);

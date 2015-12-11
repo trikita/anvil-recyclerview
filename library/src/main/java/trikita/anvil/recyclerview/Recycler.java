@@ -50,9 +50,8 @@ public final class Recycler {
                 if (this == o) return true;
                 if (o == null || getClass() != o.getClass()) return false;
                 Param param = (Param) o;
-                if (adapter != null ? !adapter.equals(param.adapter) : param.adapter != null)
-                    return false;
-                return !(recycle != null ? !recycle.equals(param.recycle) : param.recycle != null);
+                return !(adapter != null ? !adapter.equals(param.adapter) : param.adapter != null) &&
+                        !(recycle != null ? !recycle.equals(param.recycle) : param.recycle != null);
             }
         }
         public static final AdapterFunc instance = new AdapterFunc();

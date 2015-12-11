@@ -13,7 +13,7 @@ public abstract class RenderableRecyclerViewAdapter
         root.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
-        return new MountHolder(root, viewType);
+        return new MountHolder(root);
     }
 
     @Override
@@ -31,12 +31,10 @@ public abstract class RenderableRecyclerViewAdapter
     }
 
     public static class MountHolder extends RecyclerView.ViewHolder {
-        protected final int viewType;
         private Anvil.Mount mount;
 
-        public MountHolder(ViewGroup itemView, int viewType) {
+        public MountHolder(ViewGroup itemView) {
             super(itemView);
-            this.viewType = viewType;
         }
     }
 
