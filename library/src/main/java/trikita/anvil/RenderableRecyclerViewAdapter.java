@@ -24,9 +24,9 @@ public abstract class RenderableRecyclerViewAdapter
                     RenderableRecyclerViewAdapter.this.view(h);
                 }
             });
-            h.mount.render();
+            Anvil.render(h.mount);
         } else {
-            h.mount.render();
+            Anvil.render(h.mount);
         }
     }
 
