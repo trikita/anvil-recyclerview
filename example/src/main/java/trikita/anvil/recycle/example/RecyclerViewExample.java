@@ -1,17 +1,19 @@
 package trikita.anvil.recycle.example;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-
-import java.util.ArrayList;
-import java.util.List;
+import static trikita.anvil.DSL.text;
+import static trikita.anvil.DSL.textView;
 
 import trikita.anvil.RenderableView;
 import trikita.anvil.recyclerview.Recycler;
 
-import static trikita.anvil.DSL.*;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerViewExample extends Activity {
 	@Override
@@ -39,6 +41,7 @@ public class RecyclerViewExample extends Activity {
 			Recycler.view(() -> {
 				Recycler.layoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 				Recycler.hasFixedSize(true);
+				Recycler.itemAnimator(new DefaultItemAnimator());
 				Recycler.adapter(Recycler.Adapter.simple(mItems, (vh) -> {
 					textView(() -> {
 						text(mItems.get(vh.getAdapterPosition()));

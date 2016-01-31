@@ -1,14 +1,13 @@
 package trikita.anvil.recyclerview;
 
+import trikita.anvil.Anvil;
+import trikita.anvil.DSL;
+import trikita.anvil.RenderableRecyclerViewAdapter;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import java.util.List;
-
-import trikita.anvil.Anvil;
-import trikita.anvil.RenderableRecyclerViewAdapter;
-
-import trikita.anvil.DSL;
 
 public final class Recycler {
     private Recycler() {}
@@ -31,6 +30,10 @@ public final class Recycler {
 
     public static Void hasFixedSize(boolean hasFixedSize) {
         return DSL.attr(HasFixedSizeFunc.instance, hasFixedSize);
+    }
+
+    public static Void itemAnimator(RecyclerView.ItemAnimator itemAnimator) {
+        return DSL.attr(ItemAnimatorFunc.instance, itemAnimator);
     }
 
     private static final class AdapterFunc implements Anvil.AttrFunc<AdapterFunc.Param> {
@@ -83,6 +86,15 @@ public final class Recycler {
         }
     }
 
+    private static final class ItemAnimatorFunc implements Anvil.AttrFunc<RecyclerView.ItemAnimator> {
+        public static final ItemAnimatorFunc instance = new ItemAnimatorFunc();
+        public void apply(View view, RecyclerView.ItemAnimator itemAnimator, RecyclerView.ItemAnimator oldItemAnimator) {
+            if (view instanceof RecyclerView) {
+                ((RecyclerView) view).setItemAnimator(itemAnimator);
+            }
+        }
+    }
+
 
     //
     // TODO: these are the candidates for attribute setters:
@@ -90,7 +102,6 @@ public final class Recycler {
     //    setAccessibilityDelegateCompat(RecyclerViewAccessibilityDelegate accessibilityDelegate)
     //    childDrawingOrderCallback(RecyclerView.ChildDrawingOrderCallback childDrawingOrderCallback)
     //    clipToPadding(boolean clipToPadding)
-    //    itemAnimator(RecyclerView.ItemAnimator animator)
     //    itemViewCacheSize(int size)
     //    layoutFrozen(boolean frozen)
     //    nestedScrollingEnabled(boolean enabled)
