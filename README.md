@@ -13,7 +13,7 @@ repositories {
 }
 dependencies {
 	compile 'co.trikita:anvil-sdk15:+' // or sdk19
-	compile 'com.github.trikita:anvil-recyclerview:1.1'
+	compile 'com.github.trikita:anvil-recyclerview:1.2'
 }
 ```
 
